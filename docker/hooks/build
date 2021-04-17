@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # original docker build command
-echo "overwriting docker build -f $DOCKERFILE_PATH -t $IMAGE_NAME ."
+echo "overwriting docker build -t $IMAGE_NAME ."
 
 jq -r < ../versions.json 'to_entries | map({runtime: .key, version: .value[]}) | .[] | tostring' | while read jstr
 do
