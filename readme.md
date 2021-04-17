@@ -16,3 +16,5 @@ docker run -it -e ENABLE_SSH=0 -e AUTHORIZED_KEYS="`cat ~/.ssh/{keypair}.pub`" o
 docker run -p 22:22 -e AUTHORIZED_KEYS="`cat ~/.ssh/{keypair}.pub`" openssh:python-3.7.9-slim sleep 300
 # ssh -i ~/.ssh/{keypair} ssh-user@localhost
 ```
+
+[dockerhub-builds-1]: https://blog.thesparktree.com/docker-hub-matrix-builds
