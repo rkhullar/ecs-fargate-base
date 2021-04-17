@@ -1,4 +1,6 @@
-#!/usr/bin/env sh
+#!/bin/bash
+
+./read-versions ../versions.json
 
 ./read-versions ../versions.json | while read str
 do
