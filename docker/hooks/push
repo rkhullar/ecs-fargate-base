@@ -1,12 +1,10 @@
 #!/usr/bin/env sh
 
-# original docker build command
-echo "overwriting docker push $IMAGE_NAME"
-
-jq -r < ../versions.json 'to_entries | map({runtime: .key, version: .value[]}) | .[] | tostring' | while read jstr
+./read-versions ../versions.json | while read str
 do
-  RUNTIME=$(echo $jstr | jq -r '.runtime')
-  VERSION=$(echo $jstr | jq -r '.version')
+  arr=($str)
+  RUNTIME=${arr[0]}
+  VERSION=${arr[1]}
   IMAGE_TAG="${DOCKER_REPO}:${RUNTIME}-${VERSION}-${DOCKER_TAG}"
   echo docker push ${IMAGE_TAG}
   docker push ${IMAGE_TAG}

@@ -26,7 +26,7 @@ def process(path):
         data = json.load(f)
     for runtime, versions in data.items():
         for version in versions:
-            print '{runtime}:{version}'.format(runtime=runtime, version=version)
+            print runtime, version
 
 
 if __name__ == '__main__':
