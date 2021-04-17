@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+yum install -y jq
+
 # original docker build command
 echo "overwriting docker build -t $IMAGE_NAME ."
 
