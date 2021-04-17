@@ -1,8 +1,8 @@
-ARG BASE
+ARG RUNTIME
 ARG VERSION
 ARG USER='ssh-user'
 
-FROM ${BASE}:${VERSION}-slim
+FROM ${RUNTIME}:${VERSION}-slim
 ARG USER
 
 RUN apt-get update && apt-get install -y \
