@@ -1,0 +1,12 @@
+#!/bin/bash
+
+../read-versions ../versions.json | while read str
+do
+  echo $str
+  arr=($str)
+  RUNTIME=${arr[0]}
+  VERSION=${arr[1]}
+  IMAGE_TAG="${DOCKER_REPO}:${RUNTIME}-${VERSION}-${DOCKER_TAG}"
+  echo docker build -t ${IMAGE_TAG} --build-arg RUNTIME=${RUNTIME} --build-arg VERSION=${VERSION} .
+  docker build -t ${IMAGE_TAG} --build-arg RUNTIME=${RUNTIME} --build-arg VERSION=${VERSION} .
+done

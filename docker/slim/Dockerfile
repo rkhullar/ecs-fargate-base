@@ -1,8 +1,8 @@
-ARG BASE
+ARG RUNTIME
 ARG VERSION
 ARG USER='ssh-user'
 
-FROM ${BASE}:${VERSION}-slim
+FROM ${RUNTIME}:${VERSION}-slim
 ARG USER
 
 RUN apt-get update && apt-get install -y \
@@ -18,7 +18,7 @@ RUN  adduser --disabled-password --gecos '' ${USER}                 \
   && sed -i 's|#PasswordAuthentication yes|PasswordAuthentication no|g' /etc/ssh/sshd_config
 
 WORKDIR /opt/docker/entrypoints
-COPY entrypoints/* .
+COPY entrypoints/* ./
 RUN chown root:sudo *.sh && chmod ug+x *.sh
 
 USER ${USER}

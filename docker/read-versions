@@ -1,0 +1,35 @@
+#!/usr/bin/env python2
+
+"""
+#!/usr/bin/env sh
+
+jq -r < ../versions.json 'to_entries | map({runtime: .key, version: .value[]}) | .[] | tostring' | while read jstr
+do
+  RUNTIME=$(echo $jstr | jq -r '.runtime')
+  VERSION=$(echo $jstr | jq -r '.version')
+  echo $RUNTIME $VERSION
+done
+"""
+
+from argparse import ArgumentParser
+import json
+
+
+def build_parser():
+    parser = ArgumentParser()
+    parser.add_argument('path')
+    return parser
+
+
+def process(path):
+    with open(path, 'r') as f:
+        data = json.load(f)
+    for runtime, versions in data.items():
+        for version in versions:
+            print runtime, version
+
+
+if __name__ == '__main__':
+    parser = build_parser()
+    args = parser.parse_args()
+    process(args.path)
