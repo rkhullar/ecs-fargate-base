@@ -1,5 +1,14 @@
 #!/bin/bash
 
+whoami
+pwd
+ls
+
+python -V
+which jq
+which python
+
+
 ./read-versions ../versions.json | while read str
 do
   echo $str
