@@ -1,6 +1,6 @@
 #!/bin/bash
 
-./read-versions ../versions.json | while read str
+../read-versions ../versions.json | while read str
 do
   echo $str
   arr=($str)
