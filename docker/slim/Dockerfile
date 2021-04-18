@@ -18,7 +18,7 @@ RUN  adduser --disabled-password --gecos '' ${USER}                 \
   && sed -i 's|#PasswordAuthentication yes|PasswordAuthentication no|g' /etc/ssh/sshd_config
 
 WORKDIR /opt/docker/entrypoints
-COPY entrypoints/* .
+COPY entrypoints/* ./
 RUN chown root:sudo *.sh && chmod ug+x *.sh
 
 USER ${USER}
